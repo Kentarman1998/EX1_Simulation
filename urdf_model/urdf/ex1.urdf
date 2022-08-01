@@ -1292,16 +1292,16 @@
     <gazebo reference="Lrdriving">
         <material>Gazebo/Grey</material>
     </gazebo>
-    <gazebo reference="front_right_wheel">
+    <gazebo reference="Front_right_wheel">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="front_left_wheel">
+    <gazebo reference="Front_left_wheel">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="rear_right_wheel">
+    <gazebo reference="Rear_right_wheel">
         <material>Gazebo/Black</material>
     </gazebo>
-    <gazebo reference="rear_left_wheel">
+    <gazebo reference="Rear_left_wheel">
         <material>Gazebo/Black</material>
     </gazebo>
 
