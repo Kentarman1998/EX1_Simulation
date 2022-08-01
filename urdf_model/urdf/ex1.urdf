@@ -1218,7 +1218,7 @@
         <material>Gazebo/White</material>
     </gazebo>
     <gazebo reference="camera_link">
-        <material>Gazebo/RedBright</material>
+        <material>Gazebo/Red</material>
     </gazebo>
     <gazebo reference="lidar_link">
         <material>Gazebo/Black</material>
