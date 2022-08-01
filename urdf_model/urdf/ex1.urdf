@@ -1,0 +1,1311 @@
+<?xml version='1.0'?>
+<robot name="EX1">
+
+    <!-- Robot Base -->
+    <!-- EX1 White boby -->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.404 0.284 0.251"/>
+            </geometry>
+            <material name="White">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.404 0.284 0.251"/>
+            </geometry>
+        </collision>
+        <!-- <inertial>
+            <mass value='10'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial> -->
+        
+    </link>
+
+    <link name="base_footprint"/>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="base_footprint" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+
+
+    <!-- Locker -->
+    <link name="Locker">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.50" radius="0.015" />
+            </geometry>
+            <material name="Cream">
+                <color rgba="0.9 0.8 0.5 1"/>
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.50" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='2'/>
+                <inertia ixx="0.04177916667" ixy="0.0" ixz="0.0"
+                    iyy="0.0000375" iyz="0.0" izz="0.04177916667"/>
+        </inertial>
+    </link>
+
+    <joint name="Locker_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="Locker"/>
+        <origin xyz="0 0 -0.03798" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+
+
+    <!-- Right Leg -->
+    <link name="Right_leg">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <box size ="0.640 0.030 0.030" />
+            </geometry>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <box size ="0.640 0.030 0.030" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='1'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Right_leg_joint" type="continuous">
+        <parent link="Locker"/>
+        <child link="Right_leg"/>
+        <origin xyz="0 -0.250 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+
+    <!-- Right front wheel around -->
+
+    <!-- Right front steering -->
+    <link name="Rfsteering">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 1.570795" />
+            <geometry>
+                <cylinder length="0.05" radius="0.015" />
+            </geometry>
+            <material name="Silver">
+                <color rgba="0.5 0.5 0.5 1"/>
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 1.570795" />
+            <geometry>
+                <cylinder length="0.05" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.1'/>
+                <inertia ixx="0.0000264583" ixy="0.0" ixz="0.0"
+                    iyy="0.0000264583" iyz="0.0" izz="0.000125"/>
+        </inertial>
+    </link>
+
+    <joint name="Rfsteering_joint" type="continuous">
+        <parent link="Right_leg"/>
+        <child link="Rfsteering"/>
+        <origin xyz="0.30 0 -0.009" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <!-- Right_front_part1 -->
+    <link name="Right_front_part1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.11 0.02" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.11 0.02" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Right_front_part1_joint" type="fixed">
+        <parent link="Rfsteering"/>
+        <child link="Right_front_part1"/>
+        <origin xyz="0 0.03 -0.03" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Right_front_part2 -->
+    <link name="Right_front_part2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.02 0.15" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.02 0.15" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Right_front_part2_joint" type="fixed">
+        <parent link="Right_front_part1"/>
+        <child link="Right_front_part2"/>
+        <origin xyz="0 0.045 -0.065" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Right front driving -->
+    <link name="Rfdriving">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015" />
+            </geometry>
+            <material name="Silver">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+        <mass value='0.3'/>
+                <inertia ixx="0.0000793749" ixy="0.0" ixz="0.0"
+                    iyy="0.000375" iyz="0.0" izz="0.0000793749"/>
+        </inertial>
+    </link>
+
+    <joint name="Rfdriving_joint" type="continuous">
+        <parent link="Right_front_part2"/>
+        <child link="Rfdriving"/>
+        <origin xyz="0 -0.05 -0.05" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- Right front wheel -->
+    <link name="Right_front_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.090" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.090" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.6'/>
+                <inertia ixx="0.001715" ixy="0.0" ixz="0.0"
+                    iyy="0.000405" iyz="0.0" izz="0.001715"/>
+        </inertial>
+    </link>
+
+    <joint name="Right_front_wheel_joint" type="fixed">
+        <parent link="Rfdriving"/>
+        <child link="Right_front_wheel"/>
+        <origin xyz="0 -0.03 0" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+
+
+    <!-- Right rear wheel around -->
+
+    <!-- Right rear steering -->
+    <link name="Rrsteering">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 1.570795" />
+            <geometry>
+                <cylinder length="0.05" radius="0.015" />
+            </geometry>
+            <material name="Silver">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 1.570795" />
+            <geometry>
+                <cylinder length="0.05" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.1'/>
+                <inertia ixx="0.0000264583" ixy="0.0" ixz="0.0"
+                    iyy="0.0000264583" iyz="0.0" izz="0.000125"/>
+        </inertial>
+    </link>
+
+    <joint name="Rrsteering_joint" type="fixed">
+        <parent link="Right_leg"/>
+        <child link="Rrsteering"/>
+        <origin xyz="-0.30 0 -0.009" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Right rear part1 -->
+    <link name="Right_rear_part1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.11 0.02" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.11 0.02" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Right_rear_part1_joint" type="fixed">
+        <parent link="Rrsteering"/>
+        <child link="Right_rear_part1"/>
+        <origin xyz="0 0.03 -0.03" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Right rear part2 -->
+    <link name="Right_rear_part2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.02 0.15" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.02 0.15" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Right_rear_part2_joint" type="fixed">
+        <parent link="Right_rear_part1"/>
+        <child link="Right_rear_part2"/>
+        <origin xyz="0 0.045 -0.065" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Right rear driving -->
+    <link name="Rrdriving">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015" />
+            </geometry>
+            <material name="Silver">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+        <mass value='0.3'/>
+                <inertia ixx="0.0000793749" ixy="0.0" ixz="0.0"
+                    iyy="0.000375" iyz="0.0" izz="0.0000793749"/>
+        </inertial>
+    </link>
+
+    <joint name="Rrdriving_joint" type="continuous">
+        <parent link="Right_rear_part2"/>
+        <child link="Rrdriving"/>
+        <origin xyz="0 -0.05 -0.05" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- Right rear wheel -->
+    <link name="Right_rear_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.090" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.090" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.6'/>
+                <inertia ixx="0.001715" ixy="0.0" ixz="0.0"
+                    iyy="0.000405" iyz="0.0" izz="0.001715"/>
+        </inertial>
+    </link>
+
+    <joint name="Right_rear_wheel_joint" type="fixed">
+        <parent link="Rrdriving"/>
+        <child link="Right_rear_wheel"/>
+        <origin xyz="0 -0.03 0" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+
+
+    <!-- Left Leg -->
+    <link name="Left_leg">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <box size ="0.640 0.030 0.030" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <box size ="0.640 0.030 0.030" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='1'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Left_leg_joint" type="continuous">
+        <parent link="Locker"/>
+        <child link="Left_leg"/>
+        <origin xyz="0 0.250 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+
+
+    <!--Left front wheel around -->
+
+    <!--Left front steering -->
+    <link name="Lfsteering">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 1.570795" />
+            <geometry>
+                <cylinder length="0.05" radius="0.015" />
+            </geometry>
+            <material name="Silver">
+            </material>
+        </visual>
+        <!-- Right Front Wheel collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 1.570795" />
+            <geometry>
+                <cylinder length="0.05" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.1'/>
+                <inertia ixx="0.0000264583" ixy="0.0" ixz="0.0"
+                    iyy="0.0000264583" iyz="0.0" izz="0.000125"/>
+        </inertial>
+    </link>
+
+    <joint name="Lfsteering_joint" type="continuous">
+        <parent link="Left_leg"/>
+        <child link="Lfsteering"/>
+        <origin xyz="0.30 0 -0.009" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+     <!-- Left front_part1 -->
+    <link name="Left_front_part1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.11 0.02" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.11 0.02" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Left_front_part1_joint" type="fixed">
+        <parent link="Lfsteering"/>
+        <child link="Left_front_part1"/>
+        <origin xyz="0 -0.03 -0.03" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Left front part2 -->
+    <link name="Left_front_part2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.02 0.15" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- Right Front Wheel collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.02 0.15" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Left_front_part2_joint" type="fixed">
+        <parent link="Left_front_part1"/>
+        <child link="Left_front_part2"/>
+        <origin xyz="0 -0.045 -0.065" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Left front driving -->
+    <link name="Lfdriving">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015" />
+            </geometry>
+            <material name="Silver">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+        <mass value='0.3'/>
+                <inertia ixx="0.0000793749" ixy="0.0" ixz="0.0"
+                    iyy="0.000375" iyz="0.0" izz="0.0000793749"/>
+        </inertial>
+    </link>
+
+    <joint name="Lfdriving_joint" type="continuous">
+        <parent link="Left_front_part2"/>
+        <child link="Lfdriving"/>
+        <origin xyz="0 0.05 -0.05" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- Left front wheel -->
+    <link name="Left_front_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.090" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.090" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.6'/>
+                <inertia ixx="0.001715" ixy="0.0" ixz="0.0"
+                    iyy="0.000405" iyz="0.0" izz="0.001715"/>
+        </inertial>
+    </link>
+
+    <joint name="Left_front_wheel_joint" type="fixed">
+        <parent link="Lfdriving"/>
+        <child link="Left_front_wheel"/>
+        <origin xyz="0 0.03 0" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+
+
+    <!-- Left rear wheel around -->
+
+    <!-- Left rear steering -->
+    <link name="Lrsteering">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 1.570795" />
+            <geometry>
+                <cylinder length="0.05" radius="0.015" />
+            </geometry>
+            <material name="Silver">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 1.570795" />
+            <geometry>
+                <cylinder length="0.05" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.1'/>
+                <inertia ixx="0.0000264583" ixy="0.0" ixz="0.0"
+                    iyy="0.0000264583" iyz="0.0" izz="0.000125"/>
+        </inertial>
+    </link>
+
+    <joint name="Lrsteering_joint" type="fixed">
+        <parent link="Left_leg"/>
+        <child link="Lrsteering"/>
+        <origin xyz="-0.30 0 -0.009" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Left rear part1 -->
+    <link name="Left_rear_part1">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.11 0.02" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.11 0.02" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Left_rear_part1_joint" type="fixed">
+        <parent link="Lrsteering"/>
+        <child link="Left_rear_part1"/>
+        <origin xyz="0 -0.03 -0.03" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Left rear part2 -->
+    <link name="Left_rear_part2">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.02 0.15" />
+            </geometry>
+            <material name="Black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.05 0.02 0.15" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Left rear part2_joint" type="fixed">
+        <parent link="Left_rear_part1"/>
+        <child link="Left_rear_part2"/>
+        <origin xyz="0 -0.045 -0.065" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- Left rear driving -->
+    <link name="Lrdriving">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015" />
+            </geometry>
+            <material name="Silver">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.1" radius="0.015" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+        <mass value='0.3'/>
+                <inertia ixx="0.0000793749" ixy="0.0" ixz="0.0"
+                    iyy="0.000375" iyz="0.0" izz="0.0000793749"/>
+        </inertial>
+    </link>
+
+    <joint name="Lrdriving_joint" type="continuous">
+        <parent link="Left_rear_part2"/>
+        <child link="Lrdriving"/>
+        <origin xyz="0 0.05 -0.05" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- Left rear wheel -->
+    <link name="Left_rear_wheel">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.090" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- Right Front Wheel collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="1.570795 0 0" />
+            <geometry>
+                <cylinder length="0.10" radius="0.090" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.6'/>
+                <inertia ixx="0.001715" ixy="0.0" ixz="0.0"
+                    iyy="0.000405" iyz="0.0" izz="0.001715"/>
+        </inertial>
+    </link>
+
+    <joint name="Left_rear_wheel_joint" type="fixed">
+        <parent link="Lrdriving"/>
+        <child link="Left_rear_wheel"/>
+        <origin xyz="0 0.03 0" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+
+
+ <!-- Nec -->
+    <link name="Nec">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.019 0.019 0.503" />
+            </geometry>
+            <material name="Silver">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.019 0.019 0.503" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.5'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="Nec_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="Nec"/>
+        <origin xyz="0.154 0 0.377" rpy="0 0 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <!-- camera case -->
+    <link name="camera_case">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.034 0.190 0.033" />
+            </geometry>
+            <material name="White">
+            </material>
+        </visual>
+        <!-- collision -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.034 0.190 0.033" />
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.6'/>
+                <inertia ixx="0.00155" ixy="0.0" ixz="0.0"
+                    iyy="0.00155" iyz="0.0" izz="0.003"/>
+        </inertial>
+    </link>
+
+    <joint name="camera_case_joint" type="continuous">
+        <parent link="Nec"/>
+        <child link="camera_case"/>
+        <origin xyz="0 0 0.2515" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- LIDAR module base -->
+    <link name="lidar_module_base">
+        <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+            <box size="0.06 0.06 0.03"/>
+        </geometry>
+        <material name="Black">
+        </material>
+        </visual>
+        <!-- collision-->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.06 0.06 0.03"/>
+            </geometry>
+        </collision>
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.2'/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0" izz="0.001"/>
+        </inertial>
+    </link>
+
+    <joint name="lidar_module_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="lidar_module_base"/>
+        <origin xyz="0.195 0 0.20" rpy="0 0 0" />
+    </joint>
+
+    <!-- LIDAR module -->
+    <link name="lidar_link">
+        <visual>
+            <origin xyz="0 0 0.055" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.11" radius="0.03" />
+            </geometry>
+            <material name="Black">
+            </material>
+        </visual>
+        <!-- LIDAR module collision -->
+        <collision>
+            <origin xyz="0 0 0.055" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="0.11" radius="0.03" />
+            </geometry>
+        </collision>
+        
+        <!-- Mass and Inertia -->
+        <inertial>
+            <mass value='0.4'/>
+            <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0" izz="0.001"/>
+        </inertial>
+    </link>
+
+    <joint name="lidar_joint" type="fixed">
+        <parent link="lidar_module_base"/>
+        <child link="lidar_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 0 1" />
+    </joint>
+
+    <!-- camera -->
+    <link name='camera_link'>
+        <inertial>
+            <mass value="0.1"/>
+            <origin xyz="0 0 0" rpy=" 0 0 0"/>
+            <inertia
+                ixx="1e-6" ixy="0" ixz="0"
+                iyy="1e-6" iyz="0"
+                izz="1e-6"/>
+        </inertial>
+        <collision name='camera_collision'>
+            <origin xyz="0 0 0" rpy=" 0 0 0"/>
+            <geometry>
+                <box size="0.03 0.1 0.02"/>
+            </geometry>
+        </collision>
+        <visual name='camera_visual'>
+            <origin xyz="0 0 0" rpy=" 0 0 0"/>
+            <geometry>
+                <box size="0.03 0.1 0.02"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="camera_joint" type="fixed" >
+        <parent link="camera_case"/>
+        <child link="camera_link"/>
+        <origin xyz="0.01 0 0" rpy="0 0 0"/>
+        <axis xyz="0 1 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="camera_depth_frame"/>
+
+    <joint name="camera_depth_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="-1.570795 0 -1.570795"/>
+        <parent link="camera_link"/>
+        <child link="camera_depth_frame"/>
+    </joint>
+
+    <!-- omnicam -->
+    <link name="omnicam_base">
+        <visual>
+            <geometry>
+                <cylinder length="0.2" radius="0.02"/>
+            </geometry>
+        </visual>
+        
+        <collision>
+            <geometry>
+                <cylinder length="0.2" radius="0.02"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="omnicam_base_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="omnicam_base"/>
+        <origin xyz="0.0 0 0.25"/>
+    </joint>
+    <link name="omnicam_body">
+        <visual>
+            <geometry>
+                <cylinder length="0.01" radius="0.04"/>
+            </geometry>
+        </visual>
+        
+        <collision>
+            <geometry>
+                <cylinder length="0.01" radius="0.04"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="omnicam_body_joint" type="fixed">
+        <parent link="omnicam_base"/>
+        <child link="omnicam_body"/>
+        <origin xyz="0.0 0 0.1" rpy="0 0 0"/>
+    </joint>
+
+    <link name="omnicam_link"/>
+    <joint name="omnicam_joint" type="fixed">
+        <parent link="omnicam_body"/>
+        <child link="omnicam_link"/>
+        <origin xyz="0.0 0 0" rpy="0 1.570795 0"/> 
+        <!-- 1.570795 -->
+    </joint>
+
+
+    <!-- gazebo -->
+
+    <gazebo reference="camera_link">
+        <sensor name="depth_camera" type="depth">
+            <visualize>true</visualize>
+            <update_rate>30.0</update_rate>
+            <camera name="intel_realsense_r200">
+                <horizontal_fov>1.02974</horizontal_fov>
+                <image>
+                    <width>1920</width>
+                    <height>1080</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.02</near>
+                    <far>300</far>
+                </clip>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise is sampled independently per pixel on each frame.
+                        That pixel's noise value is added to each of its color
+                        channels, which at that point lie in the range [0,1]. -->
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="depth_camera_controller" filename="libgazebo_ros_camera.so">
+                <ros>
+                    <!-- <namespace>/clover</namespace> -->
+                    <!-- <remapping>image_raw:=image_demo</remapping> -->
+                    <!-- <remapping>camera_info:=camera_info_demo</remapping> -->
+                </ros>
+                <!-- <frame_name>camera_depth_frame</frame_name> -->
+                <!-- <camera_frame></camera_frame> -->
+                <!-- <hackBaseline>0</hackBaseline> -->
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <gazebo reference="omnicam_link">
+        <sensor name="omnicam" type="wideanglecamera">
+            <visualize>true</visualize>
+            <update_rate>30.0</update_rate>
+            <camera name="omnicam">
+                <horizontal_fov>6.2831</horizontal_fov>
+                <image>
+                    <width>800</width>
+                    <height>800</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.02</near>
+                    <far>300</far>
+                </clip>
+                <lens>
+                    <!-- type element is mandatory -->
+                    <type>custom</type>
+
+                        <!-- manually defined mapping function r = c1*f*fun(theta/c2 + c3) -->
+                        <!-- More information here: https://en.wikipedia.org/wiki/Fisheye_lens#Mapping_function -->
+                        <custom_function>
+                            <c1>1.05</c1>   <!-- linear scaling -->
+                            <c2>4</c2>      <!-- angle scaling -->
+                            <f>1.0</f>      <!-- one more scaling parameter -->
+                            <fun>tan</fun>  <!-- one of sin,tan,id -->
+                        </custom_function>
+
+                    <!-- if it is set to `true` your horizontal FOV will ramain as defined -->
+                    <!-- othervise it depends on lens type and custom function, if there is one -->
+                    <scale_to_hfov>true</scale_to_hfov>
+                    <!-- clip everything that is outside of this angle -->
+                    <cutoff_angle>6.2831</cutoff_angle>
+                    <!-- resolution of the cubemap texture, the highter it is - the sharper is your image -->
+                    <env_texture_size>512</env_texture_size>
+                </lens>
+                <noise>
+                    <type>gaussian</type>
+                    <!-- Noise is sampled independently per pixel on each frame.
+                        That pixel's noise value is added to each of its color
+                        channels, which at that point lie in the range [0,1]. -->
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <plugin name="omnicam_controller" filename="libgazebo_ros_camera.so">
+                <ros>
+                    <!-- <namespace>/clover</namespace> -->
+                    <!-- <remapping>image_raw:=image_demo</remapping> -->
+                    <!-- <remapping>camera_info:=camera_info_demo</remapping> -->
+                </ros>
+                <!-- <frame_name>camera_depth_frame</frame_name> -->
+                <!-- <camera_frame></camera_frame> -->
+                <!-- <hackBaseline>0</hackBaseline> -->
+            </plugin>
+        </sensor>
+    </gazebo>
+    
+    <gazebo reference="lidar_link">
+        <sensor name="lidar" type="ray">
+            <always_on>true</always_on>
+            <visualize>false</visualize>
+            <update_rate>20</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>32</samples>
+                        <resolution>1.000000</resolution>
+                        <min_angle>0.000000</min_angle>
+                        <max_angle>6.280000</max_angle>
+                    </horizontal>
+                    <!-- <vertical>
+                        <samples>12</samples>
+                        <resolution>1.000000</resolution>
+                        <min_angle>-0.50000</min_angle>
+                        <max_angle>0.500000</max_angle>
+                    </vertical> -->
+                    
+                </scan>
+                <range>
+                    <min>0.120000</min>
+                    <max>5</max>
+                    <resolution>0.02000</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="lidar_scan" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <!-- <namespace>/clover</namespace> -->
+                    <remapping>~/out:=scan</remapping>
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
+                <frame_name>lidar_link</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+
+    <gazebo>
+        <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+
+            <ros>
+            <!-- <robotNamespace>/EX1</robotNamespace> -->
+            </ros>
+            <update_rate>30</update_rate>
+
+            <!-- Added wheel -->
+            <num_wheel_pairs>2</num_wheel_pairs>
+            
+            <left_joint>Left_front_wheel_joint</left_joint>
+            <right_joint>Right_front_wheel_joint</right_joint>
+
+            <left_joint>Left_rear_wheel_joint</left_joint>
+            <right_joint>Right_rear_wheel_joint</right_joint>
+
+            <wheel_separation>0.57</wheel_separation>
+            <wheel_separation>0.57</wheel_separation>
+
+            <wheel_diameter>0.180</wheel_diameter>
+            <wheel_diameter>0.180</wheel_diameter>
+
+            <max_wheel_acceleration>1</max_wheel_acceleration>
+            <max_wheel_acceleration>1</max_wheel_acceleration>
+
+            <max_wheel_torque>10</max_wheel_torque>
+            <max_wheel_torque>10</max_wheel_torque>
+
+            <command_topic>cmd_vel</command_topic>
+            
+            <publish_odom>true</publish_odom>
+            <publish_odom_tf>true</publish_odom_tf>
+            <publish_wheel_tf>false</publish_wheel_tf>
+            
+            <odometry_topic>odom</odometry_topic>
+            <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame>
+            
+        </plugin>
+    </gazebo>
+    <gazebo>
+        <plugin name="clover_joint_states" filename="libgazebo_ros_joint_state_publisher.so">
+        <ros>
+            <!-- <robotNamespace>/EX1</robotNamespace> -->
+            <remapping>~/out:=joint_states</remapping>
+        </ros>
+        <update_rate>30</update_rate>
+        <joint_name>Left_front_wheel_joint</joint_name>
+        <!-- <joint_name>Lfsteering_joint</joint_name> -->
+        <joint_name>Right_front_wheel_joint</joint_name>
+        <!-- <joint_name>Rfsteering_joint</joint_name> -->
+        <joint_name>Left_rear_wheel_joint</joint_name>
+        <joint_name>Right_rear_wheel_joint</joint_name>
+        </plugin> 
+    </gazebo>
+
+
+    <!-- coloring -->
+    <gazebo reference="base_link">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="camera_link">
+        <material>Gazebo/RedBright</material>
+    </gazebo>
+    <gazebo reference="lidar_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+     <gazebo reference="lidar_module_base">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="camera_case">
+        <material>Gazebo/White</material>
+    </gazebo>
+    <gazebo reference="omnicam_base">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="omnicam_body">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Locker">
+        <material>Gazebo/White</material>
+    </gazebo>
+
+    <gazebo reference="Right_leg">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Rfsteering">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="Right_front_part1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Right_front_part2">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Rfdriving">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="Rrsteering">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+    <gazebo reference="Right_rear_part1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Right_rear_part2">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Rrdriving">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="Left_leg">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Lfsteering">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="Left_front_part1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Left_front_part2">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Lfdriving">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    <gazebo reference="Lrsteering">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+    <gazebo reference="Left_rear_part1">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Left_rear_part2">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="Lrdriving">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+
+    <gazebo reference="front_right_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="front_left_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="rear_right_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
+    <gazebo reference="rear_left_wheel">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+</robot>
