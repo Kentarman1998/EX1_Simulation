@@ -98,7 +98,7 @@
         </inertial>
     </link>
 
-    <joint name="Right_leg_joint" type="continuous">
+    <joint name="Right_leg_joint" type="fixed">
         <parent link="Locker"/>
         <child link="Right_leg"/>
         <origin xyz="0 -0.250 0" rpy="0 0 0" />
@@ -460,7 +460,7 @@
         </inertial>
     </link>
 
-    <joint name="Left_leg_joint" type="continuous">
+    <joint name="Left_leg_joint" type="fixed">
         <parent link="Locker"/>
         <child link="Left_leg"/>
         <origin xyz="0 0.250 0" rpy="0 0 0" />
@@ -855,7 +855,7 @@
         </inertial>
     </link>
 
-    <joint name="camera_case_joint" type="continuous">
+    <joint name="camera_case_joint" type="fixed">
         <parent link="Nec"/>
         <child link="camera_case"/>
         <origin xyz="0 0 0.2515" rpy="0 0 0" />
@@ -982,7 +982,7 @@
     <joint name="omnicam_base_joint" type="fixed">
         <parent link="base_link"/>
         <child link="omnicam_base"/>
-        <origin xyz="0.0 0 0.25"/>
+        <origin xyz="0 0 0.2225"/>
     </joint>
     <link name="omnicam_body">
         <visual>
@@ -1008,7 +1008,7 @@
     <joint name="omnicam_joint" type="fixed">
         <parent link="omnicam_body"/>
         <child link="omnicam_link"/>
-        <origin xyz="0.0 0 0" rpy="0 1.570795 0"/> 
+        <origin xyz="0 0 -0.2" rpy="0 1.570795 0"/> 
         <!-- 1.570795 -->
     </joint>
 
@@ -1237,7 +1237,6 @@
     <gazebo reference="Locker">
         <material>Gazebo/White</material>
     </gazebo>
-
     <gazebo reference="Right_leg">
         <material>Gazebo/Black</material>
     </gazebo>
@@ -1265,7 +1264,6 @@
     <gazebo reference="Rrdriving">
         <material>Gazebo/Grey</material>
     </gazebo>
-
     <gazebo reference="Left_leg">
         <material>Gazebo/Black</material>
     </gazebo>
@@ -1293,8 +1291,6 @@
     <gazebo reference="Lrdriving">
         <material>Gazebo/Grey</material>
     </gazebo>
-
-
     <gazebo reference="front_right_wheel">
         <material>Gazebo/Black</material>
     </gazebo>
